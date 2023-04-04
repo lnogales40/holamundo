@@ -1,6 +1,6 @@
 pipeline{
     agent {
-         label 'master'
+         label 'Agente1'
     }
     /*
     tools {
@@ -14,7 +14,7 @@ pipeline{
         // This can be http or https
         NEXUS_PROTOCOL = "http"
         // Where your Nexus is running. 'nexus-3' is defined in the docker-compose file
-        NEXUS_URL = "192.168.42.129:8081"
+        NEXUS_URL = "192.168.0.191:8081"
         // Repository where we will upload the artifact
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
@@ -32,7 +32,7 @@ pipeline{
         }
         stage('Build artifact'){
             agent {
-                label 'master'
+                label 'Agente1'
             }
             steps{
                 sh '''
@@ -43,7 +43,7 @@ pipeline{
         }
         stage('Upload to nexus'){
             agent {
-                label 'master'
+                label 'Agente1'
             }
             steps{
                 script{
@@ -90,7 +90,7 @@ pipeline{
         
         stage("Post") {
             agent {
-                label 'maven'
+                label 'Agente1'
             }
             steps {
                 sh '''
